@@ -18,7 +18,7 @@ export default function App() {
           </a>{' '}
           <br />
           <a
-            href="https://github.com/Tasitaforme/weather-forecast-app-react"
+            href="https://github.com/Tasitaforme/weather-forecast-simple-app"
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
@@ -26,7 +26,7 @@ export default function App() {
           </a>{' '}
           and{' '}
           <a
-            href="https://netlify.com/"
+            href="https://cozy-chebakia-837821.netlify.app/"
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
