@@ -1,3 +1,12 @@
+:root {
+  --black: rgb(33, 33, 33);
+  --white: #fff;
+  --grey: rgb(100 100 100);
+  --grey-light: #dadde1;
+  --accent-primary: #0d6efd;
+  --accent-secondary: #ffff00;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +14,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(135, 135, 135);
+  color: var(--grey);
+
+  line-height: 1.2;
 }
 
 code {
@@ -27,7 +38,7 @@ span {
 }
 
 a {
-  color: #0d6efd;
+  color: var(--accent-primary);
   text-decoration: none;
   cursor: pointer;
   font-weight: bolder;
@@ -40,15 +51,24 @@ button {
   font-family: inherit;
 }
 
+:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+input[type='search']:focus {
+  border: 2px solid var(--accent-primary);
+}
+
 ul,
 ol {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.capitalize {
-  text-transform: capitalize;
-}
+
 .App {
   max-width: 480px;
   margin: 30px auto;
@@ -57,35 +77,67 @@ ol {
 .App footer {
   font-size: 11px;
   margin: 10px auto;
+  padding-inline: 10px;
   text-align: center;
 }
 
 .Weather {
-  border: 1px solid #dadde1;
+  border: 1px solid var(--grey-light);
   padding: 16px;
   margin: 16px;
-  border-radius: 4px;
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.Weather form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.Weather form input {
+  font-size: 14px;
+  padding: 8px;
+  line-height: 1.5;
+  border: 2px solid var(--grey-light);
+  background-color: var(--white);
+  border-radius: 8px;
+  margin-right: 8px;
+  flex-grow: 1;
+}
+
+.Weather form button {
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  color: var(--white);
+  background-color: var(--accent-primary);
+  border-radius: 8px;
+}
+.Weather form button:hover {
+  opacity: 0.8;
 }
 
 .Weather h1 {
   font-size: 36px;
   font-weight: bold;
   color: rgb(33, 33, 33);
-  margin: 16px 0;
-  line-height: 29px;
+  margin: 12px 0 4px;
 }
 
 .Weather li {
   font-size: 16px;
-  font-weight: 100;
-  line-height: 19px;
+  font-weight: normal;
 }
-
+.Weather .description {
+  text-transform: capitalize;
+  font-weight: bold;
+}
 .Weather .weather-info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .Weather .weather-info .temp {
@@ -93,7 +145,7 @@ ol {
   align-items: center;
 }
 .Weather canvas {
-  margin: 10px auto;
+  margin: 0 auto;
 }
 
 .WeatherTemperature {
@@ -102,16 +154,15 @@ ol {
 .WeatherTemperature .temperature {
   color: rgb(33, 33, 33);
   font-size: 48px;
+  line-height: 1;
   margin-left: 12px;
   font-weight: bold;
-  line-height: 1;
 }
 
 .WeatherTemperature .unit {
   color: rgb(33, 33, 33);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
+  font-size: 20px;
+  font-weight: bold;
 }
 /* 
 @media screen and (min-width: 340px) {
@@ -119,3 +170,67 @@ ol {
     flex-wrap: nowrap;
   }
 } */
+
+.WeatherForecast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* justify-content: center; */
+  column-gap: 12px;
+  margin-top: 36px;
+  padding-bottom: 18px;
+  overflow-x: scroll;
+}
+
+.WeatherForecast::-webkit-scrollbar {
+  /* width: 100%;*/
+  background-color: rgba(26, 24, 47, 0.15);
+  border-radius: 4px;
+  height: 4px;
+}
+
+.WeatherForecast::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 4px;
+}
+
+.WeatherForecastItem {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  text-align: center;
+  padding-inline: 4px;
+}
+.WeatherForecastItem:not(:last-child) {
+  padding-right: 12px;
+  border-right: 1px solid var(--grey-light);
+}
+
+.WeatherForecastItem h3 {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.WeatherForecastItem .max {
+  color: var(--black);
+  padding-bottom: 4px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--accent-primary);
+  font-weight: bold;
+}
+
+.WeatherForecastItem .min {
+  font-weight: bold;
+  padding-top: 4px;
+}
+
+.WeatherForecastItem .humidity p {
+  /* margin-bottom: 4px; */
+}
+.WeatherForecastItem .react-icons {
+  margin-bottom: 4px;
+}
